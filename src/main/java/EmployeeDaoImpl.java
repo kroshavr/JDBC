@@ -17,7 +17,7 @@ public class EmployeeDaoImpl implements EmployeeDAO{
             preparedStatement.setString(2, employee.getLastName());
             preparedStatement.setString(3, employee.getGender());
             preparedStatement.setInt(4, employee.getAge());
-            preparedStatement.setInt(5, employee.getCity().getCityId());
+            preparedStatement.setInt(5, employee.getCity());
             preparedStatement.executeUpdate();
             System.out.println("Добавлена новая запись в БД: " + employee.getId() + "\n");
 
@@ -87,7 +87,7 @@ public class EmployeeDaoImpl implements EmployeeDAO{
             preparedStatement.setString(2, employee.getLastName());
             preparedStatement.setString(3, employee.getGender());
             preparedStatement.setInt(4, employee.getAge());
-            preparedStatement.setInt(5, employee.getCity().getCityId());
+            preparedStatement.setInt(5, employee.getCity());
             preparedStatement.setInt(6, employee.getId());
             preparedStatement.executeUpdate();
             System.out.println("Обновление данных по ID=" + employee.getId() + ": " + employee.getFirstName() + " " + employee.getLastName() + " " + employee.getGender() + " " + employee.getAge() + " " + employee.getCity() + "\n");
