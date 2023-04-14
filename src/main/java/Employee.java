@@ -1,22 +1,26 @@
 import javax.persistence.*;
 
 @Entity
+@Table (name = "employee")
 public class Employee {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Column
+    @Column (name = "first_name")
     private String firstName;
-    @Column
+    @Column (name = "last_name")
     private String lastName;
-    @Column
+    @Column (name = "gender")
     private String gender;
-    @Column
+    @Column (name = "age")
     private Integer age;
-    @Column
-    private int city;
+    @Column (name = "city_id")
+    private Integer city;
 
-    public Employee(int id, String firstName, String lastName, String gender, Integer age, int city) {
+    public Employee() {
+    }
+
+        public Employee(int id, String firstName, String lastName, String gender, Integer age, Integer city) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -25,8 +29,6 @@ public class Employee {
         this.city = city;
     }
 
-    public Employee() {
-    }
 
     public int getId() {
         return id;
@@ -68,11 +70,11 @@ public class Employee {
         this.age = age;
     }
 
-    public int getCity() {
+    public Integer getCity() {
         return city;
     }
 
-    public void setCity(int city) {
+    public void setCity(Integer city) {
         this.city = city;
     }
 
