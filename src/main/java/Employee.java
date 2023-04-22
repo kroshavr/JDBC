@@ -4,7 +4,7 @@ import javax.persistence.*;
 @Table (name = "employee")
 public class Employee {
     @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     @Column (name = "first_name")
     private String firstName;
@@ -14,19 +14,18 @@ public class Employee {
     private String gender;
     @Column (name = "age")
     private Integer age;
-    @Column (name = "city_id")
-    private Integer city;
+    @ManyToOne (fetch = FetchType.EAGER)
+    @JoinColumn (name = "city_id")
+    private City city;
 
     public Employee() {
     }
 
-        public Employee(int id, String firstName, String lastName, String gender, Integer age, Integer city) {
-        this.id = id;
+        public Employee(String firstName, String lastName, String gender, Integer age) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;
         this.age = age;
-        this.city = city;
     }
 
 
@@ -70,11 +69,11 @@ public class Employee {
         this.age = age;
     }
 
-    public Integer getCity() {
+    public City getCity() {
         return city;
     }
 
-    public void setCity(Integer city) {
+    public void setCity(City city) {
         this.city = city;
     }
 

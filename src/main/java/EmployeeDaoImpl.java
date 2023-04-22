@@ -18,13 +18,10 @@ public class EmployeeDaoImpl implements EmployeeDAO{
 
     @Override
     public Employee getFromEmployeeById(int id) {
-        Employee employee = null;
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("myPersistenceUnit");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         entityManager.getTransaction().begin();
-        String eQuery = "SELECT s FROM Employee s WHERE id = :id";
-        TypedQuery<Employee> query = entityManager.createQuery(eQuery, Employee.class);
-        query.setParameter("id", id);
+        Employee employee = entityManager.find(Employee.class, id);
         entityManager.getTransaction().commit();
         entityManager.close();
         entityManagerFactory.close();
